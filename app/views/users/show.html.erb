@@ -47,3 +47,54 @@
     </div>
   </div>
 </section>
+
+
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+      <% @user.englishes.each do | english | %>
+        <div class="column is-4">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <%= link_to english_path(english) do %>
+                 <%= attachment_image_tag english, :image %>
+                <% end %>
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-content">
+                  <%= link_to english_path(english), class: "panel-block" do %>
+                    <span class="panel-icon">
+                      <i class="fas fa-book" aria-hidden="true"></i>
+                    </span>
+                     Detail
+                  <% end %>
+                  <% if @user.id == current_user.id %>
+                     <%= link_to edit_english_path(english), class: "panel-block" do %>
+                      <span class="panel-icon">
+                        <i class="fas fa-edit"></i>
+                      </span>
+                      Edit
+                    <% end %>
+                     <%= link_to english_path(english), method: :delete, data: {confirm: "Are you sure？"}, class: "panel-block" do %>
+                      <span class="panel-icon">
+                        <i class="fas fa-trash"></i>
+                      </span>
+                      Delete
+                     <% end %>
+                      <% end %>
+                     </div>
+                    </div>
+                  <div class="content">
+                      <time><%= english.updated_at.strftime("%Y-%m-%d %H:%M") %></time>Update
+                  </div>
+                </div>
+               </div>
+             </div>
+          <% end %>
+        </div>
+      </div>
+  </section>
