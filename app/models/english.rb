@@ -3,10 +3,10 @@ class English < ApplicationRecord
   belongs_to :user
   attachment :image
 
-  with_options  presence: true do
-  validates :title
-  validates :body
-  validates :image
-end
+
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :image, presence: true
+
 
 end

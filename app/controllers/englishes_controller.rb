@@ -17,7 +17,7 @@ class EnglishesController < ApplicationController
     @english = English.new(english_params)
     @english.user_id = current_user.id
   if @english.save
-    redirect_to english_path(@english)
+    redirect_to english_path(@english), notice: 'Update succeeded'
   else
     render :new
   end
@@ -26,7 +26,7 @@ class EnglishesController < ApplicationController
   def update
     @english = English.find(params[:id])
     if@english.update(english_params)
-    redirect_to english_path(@english)
+    redirect_to english_path(@english), notice: 'Update succeeded'
     else
     render :edit
     end

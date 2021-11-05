@@ -8,11 +8,23 @@
   </div>
 </section>
 
+<% if @english.errors.any? %>
+  <div class="notification is-danger">
+    <h2><%= pluralize(@english.errors.count, "error") %> prohibited this object from being saved: not successfully</h2>
+    <ul>
+      <% @english.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
 <section class="section">
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-6">
-        <%= form_with model: @english do |f| %>
+        <%= form_with model: @english, local: true do |f| %>
         <div class="field">
         <%= f.label :title, "Title", class: "label" %>
         <%= f.text_field :title, class: "input" %>
