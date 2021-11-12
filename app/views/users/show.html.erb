@@ -24,6 +24,19 @@
                 <td class="is-size-4">
                  <strong><%= @user.username %></strong>
                 </td>
+                <td>follows: <%= link_to @user.followings.count, user_followings_path(@user) %></td>
+                <td>followers:<%= link_to @user.followers.count, user_followers_path(@user) %></td>
+                 <% if current_user != @user %>
+                 <div class="button" class="btn btn-primary">
+                   <% if current_user.following?(@user) %>
+                      <%= link_to "フォロー外す", user_relationships_path(@user), method: :delete %>
+                    <% else %>
+                      <%= link_to "フォローする", user_relationships_path(@user), method: :post %>
+                    <% end %>
+                   <% end%>
+                  </div>
+                </td>
+                <tr>
                  <% if @user.id == current_user.id %>
                  <td class="is-size-4">
                   <%= @user.email %>
