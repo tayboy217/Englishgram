@@ -17,6 +17,8 @@ class User < ApplicationRecord
 
   validates :username, presence: true
   
+  has_many :likes
+  
   # フォローしたときの処理
 def follow(user_id)
   relationships.create(followed_id: user_id)

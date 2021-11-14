@@ -32,6 +32,11 @@
                 <tr>
                   <td><%= simple_format @english.body %></td>
                 </tr>
+               <% if book.favorited_by?(current_user) %>
+               <%= link_to book.favorites.count, book_favorites_path(book), method: :delete, class: "fas fa-heart heart_red" %>
+            　　<% else %>
+              　<%= link_to book.favorites.count, book_favorites_path(book), method: :post, class: "fas fa-heart heart_blue" %>
+                <% end %>
             </table>
             <% if @english.user.id == current_user.id %>
               <%= link_to "Edit", edit_english_path(@english), class: "button is-success"%>
