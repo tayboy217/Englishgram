@@ -27,24 +27,26 @@
             <div class="content">
               <table class="table is-narrow">
                 <tr>
-                  <th>Example</th>
-                  <% if @post.favorited_by?(current_user) %>
-                  <%= link_to post_favorite_path(@post), method: :DELETE do %>
-                  <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-                  <%= @post.favorites.count %>like
-                  <% end %>
-                  <% else %>
-                  <%= link_to post_favorites_path(@post) , method: :POST do %>
-                  <i class="fa fa-heart-o" aria-hidden="true"></i>
-                  <%= @post.favorites.count %>like
-                  <% end %>
-                  <% end %>
+                  <th>
+                   Example
+                  <% if @english.favorited_by?(current_user) %>
+                   <%= link_to english_favorite_path(@english), method: :DELETE do %>
+                    <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                    <%= @english.favorites.count %>like
+                   <% end %>
+                   <% else %>
+                    <%= link_to english_favorites_path(@english) , method: :POST do %>
+                    <i class="fa fa-heart-o" aria-hidden="true"></i>
+                    <%= @english.favorites.count %>like
+                   <% end %>
+                 <% end %>
+                  </th>
                 </tr>
                 <tr>
                   <td><%= simple_format @english.body %></td>
                 </tr>
-
             </table>
+
             <% if @english.user.id == current_user.id %>
               <%= link_to "Edit", edit_english_path(@english), class: "button is-success"%>
             <% end %>

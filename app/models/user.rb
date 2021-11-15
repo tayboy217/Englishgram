@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   attachment :profile_image
   has_many :englishes, dependent: :destroy
-  
+
   # フォローをした、されたの関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
@@ -16,9 +16,10 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
   validates :username, presence: true
-  
-  has_many :favorites
-  
+
+  has_many :favorites, dependent: :destroy
+
+
   # フォローしたときの処理
 def follow(user_id)
   relationships.create(followed_id: user_id)

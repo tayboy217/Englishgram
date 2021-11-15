@@ -9,8 +9,8 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-   @english = English.find(params[:english_id])
-    favorite = current_user.favorites.find_by(user_id: @user.id)
+    @english = English.find(params[:id])
+    favorite = @english.favorites.find_by(user_id: current_user.id)
     favorite.destroy
     redirect_to request.referer
   end
