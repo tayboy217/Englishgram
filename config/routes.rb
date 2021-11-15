@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'favorites/create'
+  get 'favorites/destroy'
  devise_for :users
  
  root to: "home#index"
@@ -8,5 +10,8 @@ Rails.application.routes.draw do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
  end
- resources :englishes
+ 
+ resources :englishes do
+  resources :favorites , only: [:create , :destroy]
+ end
 end
