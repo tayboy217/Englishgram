@@ -7,6 +7,7 @@ class EnglishesController < ApplicationController
 
   def show
     @english = English.find(params[:id])
+    @book_comment = BookComment.new
   end
 
   def new
