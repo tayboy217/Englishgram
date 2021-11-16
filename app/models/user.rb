@@ -19,7 +19,8 @@ class User < ApplicationRecord
 
   has_many :favorites, dependent: :destroy
 
-
+  has_many :englishes, dependent: :destroy
+  has_many :comments
   # フォローしたときの処理
 def follow(user_id)
   relationships.create(followed_id: user_id)
