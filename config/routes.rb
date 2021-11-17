@@ -15,6 +15,6 @@ Rails.application.routes.draw do
 
  resources :englishes do
   resources :favorites , only: [:create , :destroy]
-  resources :comments, only: [:create]
+  resources :book_comments, only: [:create, :destroy]
  end
 end

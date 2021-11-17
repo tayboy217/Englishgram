@@ -53,7 +53,7 @@ class EnglishesController < ApplicationController
 
   private
   def english_params
-    params.require(:english).permit(:title, :body, :image)
+    params.require(:english).permit(:title, :body, :image, :book_comment)
   end
 
 end

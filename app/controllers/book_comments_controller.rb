@@ -7,7 +7,7 @@ class BookCommentsController < ApplicationController
 		if @book_comment.save
   		redirect_to english_path(@english.id)
 		else
-		  render 'englishess/show'
+		  render 'englishes/show'
 		end
 	end
 
